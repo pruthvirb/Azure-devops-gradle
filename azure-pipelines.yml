@@ -31,6 +31,9 @@ steps:
     targetRepo: 'libs-release'
     usesPlugin: true
     useWrapper: true
+    collectBuildInfo: true
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
 - task: ArtifactoryPublishBuildInfo@1
   inputs:
     artifactoryService: 'bandi-cloud'
