@@ -25,17 +25,14 @@ steps:
   inputs:
     gradleBuildFile: 'build.gradle'
     tasks: 'artifactoryPublish'
-    artifactoryResolverService: 'artifactory'
+    artifactoryResolverService: 'bandi-cloud'
     sourceRepo: 'libs-release'
-    artifactoryDeployerService: 'artifactory'
+    artifactoryDeployerService: 'bandi-cloud'
     targetRepo: 'libs-release'
     usesPlugin: true
     useWrapper: true
-    collectBuildInfo: true
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
 - task: ArtifactoryPublishBuildInfo@1
   inputs:
-    artifactoryService: 'artifactory'
+    artifactoryService: 'bandi-cloud'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
