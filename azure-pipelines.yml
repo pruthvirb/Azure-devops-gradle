@@ -26,7 +26,9 @@ steps:
     gradleBuildFile: 'build.gradle'
     tasks: 'artifactoryPublish'
     artifactoryResolverService: 'bandi-cloud'
+    sourceRepo: 'libs-release'
     artifactoryDeployerService: 'bandi-cloud'
+    targetRepo: 'libs-release'
     usesPlugin: true
     useWrapper: true
     collectBuildInfo: true
