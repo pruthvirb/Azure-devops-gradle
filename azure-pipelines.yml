@@ -28,13 +28,15 @@ steps:
     artifactoryResolverService: 'bandi-cloud'
     sourceRepo: 'libs-release'
     artifactoryDeployerService: 'bandi-cloud'
-    usesPlugin: true
-    useWrapper: true
-    collectBuildInfo: true
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
+    targetRepo: 'libs-release-local'
 - task: ArtifactoryPublishBuildInfo@1
   inputs:
     artifactoryService: 'bandi-cloud'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
+- task: ArtifactoryXrayScan@1
+  inputs:
+    artifactoryService: 'bandi-cloud'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    allowFailBuild: true
