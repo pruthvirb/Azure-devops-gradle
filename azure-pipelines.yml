@@ -14,7 +14,7 @@ steps:
     tasks: 'artifactoryPublish'
     artifactoryResolverService: 'hts2-art'
     sourceRepo: 'libs-release'
-    artifactoryDeployerService: 'hts2-xary'
+    artifactoryDeployerService: 'hts2-xray'
     targetRepo: 'libs-release-local'
 - task: ArtifactoryPublishBuildInfo@1
   inputs:
@@ -23,7 +23,7 @@ steps:
     buildNumber: '$(Build.BuildNumber)'
 - task: ArtifactoryXrayScan@1
   inputs:
-    artifactoryService: 'hts2-xary'
+    artifactoryService: 'hts2-xray'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     allowFailBuild: true
