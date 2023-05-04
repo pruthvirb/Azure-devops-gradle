@@ -8,33 +8,22 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 steps:
-- task: Gradle@2
-  inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'build'
 - task: ArtifactoryGradle@1
   inputs:
     gradleBuildFile: 'build.gradle'
     tasks: 'artifactoryPublish'
-    artifactoryResolverService: 'bandi-cloud'
+    artifactoryResolverService: 'hts2-art'
     sourceRepo: 'libs-release'
-    artifactoryDeployerService: 'bandi-cloud'
+    artifactoryDeployerService: 'hts2-xary'
     targetRepo: 'libs-release-local'
 - task: ArtifactoryPublishBuildInfo@1
   inputs:
-    artifactoryService: 'bandi-cloud'
+    artifactoryService: 'hts2-art'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
 - task: ArtifactoryXrayScan@1
   inputs:
-    artifactoryService: 'bandi-cloud'
+    artifactoryService: 'hts2-xary'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     allowFailBuild: true
